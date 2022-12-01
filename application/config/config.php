@@ -24,8 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-//$config['base_url'] = 'http://localhost/hidrat1/';
-$config['base_url'] = 'https://www.hidratec.cl/';
+//$config['base_url'] = '';
+$config['base_url'] = '';
 /*
 |--------------------------------------------------------------------------
 | Index File
