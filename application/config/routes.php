@@ -65,6 +65,7 @@ $route['products']['GET']  = 'Welcome/products';
 $route['contacts']['GET']  = 'Welcome/contacts';
 $route['employ']['GET']  = 'Welcome/employ';
 $route['clients']['GET']  = 'Welcome/clients';
+$route['shoppingCart']['GET']  = 'ShoppingCart/adminPurchase';
 $route['api/services']['GET'] = 'HomeSite/getServices';
 $route['api/personal']['GET'] = 'HomeSite/getPersonal';
 $route['api/contacts']['GET'] = 'HomeSite/getContacts';
@@ -297,6 +298,10 @@ $route['api/home/update/product/up/imagep/(:num)']['POST']  = 'Products/update_u
 $route['api/home/update/product/up/images/(:num)']['POST']  = 'Products/update_uploadImages/$1';
 $route['api/home/product/getFieldsUpdate/(:num)']['GET'] = 'Products/getFieldsUpdate/$1';
 $route['api/home/adminUpdate/product/(:num)']['GET'] = 'Products/adminUpdateProduct/$1';
+$route['api/home/adminCopy/product/(:num)']['GET'] = 'Products/adminCopyProduct/$1';
+$route['api/home/copy/product']['POST'] = 'Products/copyProduct';
+$route['api/home/copy/product/up/imagep/(:num)']['POST']  = 'Products/copy_uploadImageP/$1';
+$route['api/home/copy/product/up/images/(:num)']['POST']  = 'Products/copy_uploadImages/$1';
 $route['api/home/delete/product/(:num)']['POST'] = 'Products/deleteProduct/$1';
 
 
@@ -307,9 +312,19 @@ $route['api/home/create/purveyor']['POST'] = 'Purveyor/createPurveyor';
 $route['api/home/update/purveyor']['POST'] = 'Purveyor/updatePurveyor';
 $route['api/home/state/purveyor']['POST'] = 'Purveyor/changeState';
 
+/*Transbank y Shopping Cart*/
+$route['api/newTransaction']['POST'] = 'ShoppingCart/newTransaction';
+$route['api/newTransaction/result']['GET'] = 'ShoppingCart/resultTrans';
+$route['api/cart/getProducts']['GET'] = 'ShoppingCart/getProducts';
+$route['api/cart/addProduct']['POST'] = 'ShoppingCart/addProduct';
+$route['api/cart/plusProduct/(:num)']['GET'] = 'ShoppingCart/plusProduct/$1';
+$route['api/cart/minusProduct/(:num)']['GET'] = 'ShoppingCart/minusProduct/$1';
+$route['api/cart/addMultipleProduct']['POST'] = 'ShoppingCart/addMultipleProduct';
+$route['api/cart/addMultipleProductDetail']['POST'] = 'ShoppingCart/addMultipleProductDetail';
+$route['api/cart/deleteProduct/(:num)']['GET'] = 'ShoppingCart/deleteProduct/$1';
+$route['api/cart/quantity']['GET'] = 'ShoppingCart/getQuantity';
 
-
-
+$route['api/test/mail']['GET'] = 'ShoppingCart/mail';
 
 
 

@@ -31,7 +31,7 @@ public function get_supplier()
 
 public function get_product()
 {   
-    $sql="SELECT p.id ,p.name name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+    $sql="SELECT p.id ,p.name name, p.description, p.model, p.code, p.price, p.stock, p.image_first ,sc.name subcategory, c.name category , s.name supplier
     FROM product p
     JOIN category c ON c.id = p.category_id
     JOIN supplier s ON s.id= p.supplier_id
@@ -222,7 +222,7 @@ public function get_product()
 
    public function get_products_id($id){
     
-    $query = "SELECT p.id ,p.name name , p.description ,p.model , p.code ,sc.name subcategory, c.name category , s.name supplier,p.image_first, p.images 
+    $query = "SELECT p.id ,p.name name , p.price, p.stock, p.description ,p.model , p.code ,sc.name subcategory, c.name category , s.name supplier,p.image_first, p.images 
     FROM product p
     JOIN category c ON c.id = p.category_id
     JOIN supplier s ON s.id= p.supplier_id
@@ -233,11 +233,5 @@ public function get_product()
     
      return $this->db->query($query,array($id))->result_array();
   
-   }
-
-
-
-
-   
-
+   } 
 }

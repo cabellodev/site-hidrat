@@ -72,6 +72,10 @@
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>AOS.init();</script>
   
+        <script src="<?php echo base_url(); ?>assets/site_js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/site_js/jquery.sticky.js"></script>
+
+        <script src="<?php echo base_url(); ?>assets/site_js/custom.js"></script>
         <script src="<?php echo base_url(); ?>assets/site_js/waypoints.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/site_js/counterup.min.js"></script>
  

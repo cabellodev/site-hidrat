@@ -14,6 +14,25 @@ $(() =>{
 })
 
 
+newTrans = () => {
+    
+    let xhr = new XMLHttpRequest();
+    xhr.open("get", `${host_url}api/transbank`);
+    xhr.responseType = "json";
+    xhr.addEventListener("load", () => {
+        let data = xhr.response;
+        if (xhr.status === 200) {
+            window.location.href = data.url;
+        }else {
+            alert('error');
+        }
+    });
+    xhr.send();
+
+}
+
+$('#btn-transbank').on('click', newTrans);
+
 get_section = ()=> {
     $.ajax({
 		type: "GET",

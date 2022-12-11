@@ -109,6 +109,31 @@
 
 							
 
+							</div>
+						<div>
+							<div class='row'>
+								<div class='col-md-5' style='margin:auto' >
+									<div class='input-group'>
+										<span onclick=minus(); class='btn input-group-text fxw-btn-count' style='width:33%;background-color: #eeeeee;'>
+											-
+										</span>
+										<input id='quantity' type='text' class='form-control fxw-input-count' value='0' min='0' style='width:33%; background-color: white;'>
+										<span onclick=plus(); class='btn input-group-text fxw-btn-count' style='width:33%;background-color: #eeeeee;'>
+											+
+										</span>
+									</div>
+						</div>
+					</div>
+					</br>
+							<div class="row">
+								<div class="col-md-12" style="display:flex">
+									<button id='addProduct' class="custom-btn add-to-cart-btn-details">
+										<i class="fa fa-shopping-cart"></i>
+											Agregar al carro
+									</button>
+								</div>
+							</div>
+						
 						</div>
 					</div>
 
