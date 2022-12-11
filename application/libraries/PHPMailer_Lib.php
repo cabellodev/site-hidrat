@@ -198,15 +198,15 @@ class PHPMailer_Lib
         $mail->isSMTP();
         $mail->Host = 'smtp.googlemail.com';  //gmail SMTP server
         $mail->SMTPAuth = true;
-        $mail->Username = 'baraippox21@gmail.com';   //username
-        $mail->Password = 'zffxexawizeeujly';   //password
+        $mail->Username = '';   //username
+        $mail->Password = '';   //password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
         $mail->Port = 465; 
         
         $mail->setFrom('baraippox21@gmail.com', 'Comprobante de compra Orden '.$order);
         
         // Add a recipient
-        $mail->addAddress('de.barahonab@gmail.com');
+        $mail->addAddress('');
 
         // Email subject
         $mail->Subject ="Sistema de ventas - HIDRATEC";
