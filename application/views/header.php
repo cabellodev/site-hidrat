@@ -15,7 +15,6 @@
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
         
-      
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         
         
@@ -32,17 +31,16 @@
         <link href="<?php echo base_url(); ?>assets/site_css/owl.carousel.css?v=<?php echo(rand()); ?>" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/site_css/templatemo-leadership-event.css?v=<?php echo(rand()); ?>" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/site_css/venus.css?v=<?php echo(rand()); ?>" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>assets/site_css/shoppingCart.css?v=<?php echo(rand()); ?>" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/site_css/fontello.css?v=<?php echo(rand()); ?>" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/site_css/whatsapp.css?v=<?php echo(rand()); ?>" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>assets/vendor/fontawesome-free-1/css/all.min.css" rel="stylesheet" type="text/css">
      <link href="<?php echo base_url(); ?>assets/site_css/chat.css?v=<?php echo(rand()); ?>" rel="stylesheet">
         <script>
                  const host_url = "<?php echo base_url(); ?>";
         </script>
-        
-    
         <script src="<?php echo base_url();?>assets/site_js/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
     
     <body>
@@ -102,14 +100,18 @@
                         <li class="nav-item">
                             <a class="nav-link custom-btn btn d-none d-lg-block" href="http://181.212.34.4/home/login">Portal</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="cart nav-link custom-btn btn d-none d-lg-block"  href="<?php echo base_url();?>shoppingCart">
+                                <i class="fa-solid fa-cart-shopping fa-lg"></i>
+                                <span id="cart_menu_num" class="badge rounded-circle"></span>
+                            </a>
+                        </li>
                     </ul>
                 <div>
                         
             </div>
         </nav>
         
-
-      
   <!--
      <div class="conteiner-chat">
         <div class="card chat-box">
@@ -151,15 +153,13 @@
         </div>
 
         </div> 
-          
-          
           -->
         
         <a href="https://wa.me/56953945212" class="btn-wsp"  > <i class="icon-whatsapp"></i></a>
      <!--   <a href="" class="btn-chat" target="_blanck" > <i class="icon-chat"></i></a>-->
 
           
-   
+        <script src="<?php echo base_url();?>assets/site_js/jquery.min.js"></script>
         <script src="<?php echo base_url();?>assets/site_js/owl.carousel.min.js"></script>
         <script src="<?php echo base_url();?>assets/site_js/wow.min.js"></script>
         <script> new WOW( {
@@ -170,18 +170,14 @@
             live:         true        // default
           }).init();</script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
         <script>AOS.init();</script>
-      
-     
-        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="<?php echo base_url(); ?>assets/site_js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/site_js/headerShoppingCart.js"></script>        
         <script src="<?php echo base_url(); ?>assets/site_js/jquery.sticky.js"></script>
         <script src="<?php echo base_url(); ?>assets/site_js/waypoints.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/site_js/counterup.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/site_js/chat_live.js?v=<?php echo(rand()); ?>"></script>
       
-  
-        
-
         
      

@@ -99,10 +99,10 @@ $db['default'] = array(
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'ip-100-6-250',
-	'username' => 'hidratec_soporte',
-	'password' => '*307GKZn$W*8',
-	'database' => 'hidratec_site_hidratec1',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'site_hidratec',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

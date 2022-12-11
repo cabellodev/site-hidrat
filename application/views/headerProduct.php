@@ -15,8 +15,6 @@
           <!--  <script src="//code.tidio.co/adkvqew1atfbzk4t88zybvzeps1zgg7d.js" async></script>-->
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         
-       
-        
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
         
@@ -24,19 +22,20 @@
         <link href="<?php echo base_url(); ?>assets/site_css/bootstrap-icons.css" rel="stylesheet">
 
         <link href="<?php echo base_url(); ?>assets/site_css/bootstrap.min.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>assets/site_css/templatemo-leadership-event.css" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/site_css/venus.css" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/site_css/slick.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>assets/site_css/shoppingCart.css?v=<?php echo(rand()); ?>" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/site_css/slick-theme.css" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/site_css/nouislider.min.css" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/site_css/style-product.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>assets/site_css/font-awesome.min.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>assets/vendor/fontawesome-free-1/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url(); ?>assets/site_css/templatemo-leadership-event.css" rel="stylesheet">
         
-
         <script>
         const host_url = "<?php echo base_url(); ?>";
         </script>
          <script src="<?php echo base_url();?>assets/site_js/jquery.min.js"></script>
+         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
     
     <body>
@@ -97,6 +96,12 @@
                         <li class="nav-item">
                             <a class="nav-link custom-btn btn d-none d-lg-block" href="http://181.212.34.4/home/login">Portal</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="cart nav-link custom-btn btn d-none d-lg-block"  href="<?php echo base_url();?>shoppingCart">
+                                <i class="fa-solid fa-cart-shopping fa-lg"></i>
+                                <span id="cart_menu_num" class="badge rounded-circle">0</span>
+                            </a>
+                        </li>
                     </ul>
                 <div>
                         
@@ -106,6 +111,7 @@
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="<?php echo base_url() ;?>assets/site_js/slick.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/site_js/headerShoppingCart.js"></script>
         <script src="<?php echo base_url() ;?>assets/site_js/nouislider.min.js"></script>
         <script src="<?php echo base_url() ;?>assets/site_js/jquery.zoom.min.js"></script>
         

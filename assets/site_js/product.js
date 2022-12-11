@@ -7,6 +7,7 @@ $(()=>{
 
 })
 
+let products = [];
 
 get_products_all =()=>{
 
@@ -16,8 +17,9 @@ get_products_all =()=>{
 		crossOrigin: false,
 		dataType: "json",
 		success: (result) => {
-           
-			draw_products(result);
+             products = result; 
+             console.log(products);          
+			 draw_products(result);
 			}
         ,
     
@@ -29,8 +31,6 @@ get_products_all =()=>{
 
         } ,
     });
-
-
 }
 
 
@@ -278,9 +278,6 @@ search_product= ()=>{
     });
 }
 
-
-
-
  
  draw_products=(product)=>{
 
@@ -295,7 +292,7 @@ search_product= ()=>{
         showNavigator: false,
         showFirstOnEllipsisShow: true,
         showLastOnEllipsisShow: true,
-        pageSize: 12 ,
+        pageSize: 12,
         callback: function (data, pagination) {
 
            
@@ -305,7 +302,7 @@ search_product= ()=>{
             let largo = data.length;
 
             $.each(data, function (index, item) {
-                content = `<div class="col-lg-3 col-md-4 col-xs-6 wow slideInRight " data-wow-delay="0.8">
+                /* content = `<div class="col-lg-3 col-md-4 col-xs-6 wow slideInRight " data-wow-delay="0.8">
                 <div class="product">
                     <div class="product-img">
                         <img src="${host_url}/assets/images/products/image_first/${item.image_first}" alt="${item.name}">
@@ -314,21 +311,72 @@ search_product= ()=>{
                         <p class="product-category">${item.category}</p>
                         <p class="product-category">${item.supplier}</p>
                         <h3 class="product-name"><a href="#">${item.name}</a></h3>
-                    <!--<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4> -->
-                           <div class="product-rating">
+                        <h4 class="product-price">${item.price}</h4>
+                        <div class="product-rating">
                         </div>
-                        <div class="product-btns">
-                            <!--	<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>-->
-                            <button class="quick-view"><i class="bi-eye"></i><span class="tooltipp"> Ver componente </span></button>
-                            <!--<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>-->
-        
+                         <div class="">
+                            <button class=""><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                            <button class=""><i class="bi-eye"></i><span class="tooltipp"> Ver componente </span></button>
+                            <button class=""><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                            </div>
+                       
+                        </div> 
+                        <div class="add-to-cart">
+                            <button class="add-to-cart-btn rounded" id="href-product" onClick=product_by_id(${item.id}) ><i class="fa fa-shopping-cart"></i> Agregar al carro</button>
                         </div>
                     </div>
-                    <div class="add-to-cart">
-                        <button class="add-to-cart-btn" id="href-product" onClick=product_by_id(${item.id}) ><i class="fa fa-shopping-cart"></i> Detalles</button>
-                    </div>
-                    </div>
-                </div>`;
+                    
+                </div>`; */
+
+
+                content= `<div class="col-lg-3 col-md-4 col-xs-6 wow slideInRight" data-wow-delay="0.8">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="${host_url}/assets/images/products/image_first/${item.image_first}" alt="${item.name}">
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="product-body">
+                                            <div class="row">
+                                                <div>
+                                                    <p class="product-category">${item.category}</p>
+                                                    <p class="product-category">${item.supplier}</p>
+                                                    <h3 class="product-name"><a href="#">${item.name}</a></h3>
+                                                    <h4 class="product-price">$${item.price}</h4>
+                                                </div>
+                                            </div>  
+                                
+                                            <div class="">
+                                                
+                                            </div>
+                                                    
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="add-to-cart">
+                                            <div class="row">
+                                                <div class="col-md-12 show-btn-add-cart">                        
+                                                    <button class="add-to-cart-btn" id="href-product" onClick=product_by_id(${item.id})>
+                                                        <i class="fa-solid fa-eye"></i>       
+                                                            Ver detalles
+                                                    </button>
+                                                </div>
+                                                <div class="col-md-12 space-show-btn-add-cart">
+                                                    
+                                                </div>
+                                                <div class="col-md-12 show-btn-add-cart">
+                                                    <button class="add-to-cart-btn" id="href-product" onClick=add_product_by_id(${item.id})>
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                        Agregar al carro
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+
  
                 if(( (index+1) % 4 ) == 0){
                     aux = aux + content;
@@ -359,10 +407,104 @@ product_by_id =(id)=>{
     
 }
 
+add_product_by_id = (id)=>{
+
+    let cantidad = parseInt(localStorage.getItem('ncantidad')) +1;
+    localStorage.setItem("ncantidad", cantidad);
+
+    let product;
+    products.map((u) => {
+        console.log(u);
+        if(u.id == id){
+            product = {
+                id: u.id,
+                description: {
+                    id: u.id,
+                    code: u.code,
+                    name: u.name,
+                    description: jQuery.parseJSON(u.description),
+                    model: u.model,   
+                    price: format_price(u.price),
+                    stock: u.stock,
+                    image_first: u.image_first,
+                    category: u.category,
+                    supplier: u.supplier
+                }
+            }
+        }
+    });
+
+
+	$.ajax({
+		data: {product},
+		type: "POST",
+		url: host_url + "api/cart/addProduct",
+		crossOrigin: false,
+		dataType: "json",
+		success: (result) => {
+
+            swal({
+                title: "Exito!",
+                icon: "success",
+                text: "Se han agregado los productos con éxito",
+                buttons: true,
+                buttons: {
+                    confirm: {
+                        text: "Seguir comprando",
+                        value: '1',
+                        visible: true,
+                    },
+                    car: {
+                        text: "Ir al carro",
+                        value: '2',
+                        visible: true,
+                    },
+                  },
+            }).then((action) => {
+                if (action == "1") {
+                    $('#cart_menu_num').text(result.newNumber);
+                    swal.close();
+                } else if (action == "2")  {
+                    window.location.href = `${host_url}shoppingCart`;
+                }
+            });
+		},
+		error: (result) => {	
+			swal({
+				title: "Error",
+				icon: "error",
+				text: result.msg,
+			})
+		}		
+	});
+}
 
 
 $("#search_product").on('click',search_product);
 
+format_price = (price) => {
+    var num = price.toString() 
+    var numArr = num.split('.')
+    var [num, dotNum] = numArr
+ 
+ 
+    var operateNum = num.split('').reverse()
+    var result = [], len = operateNum.length
+    for(var i = 0; i< len; i++){
+         result.push(operateNum[i])
+         if(((i+1) % 3 === 0) && (i !== len-1)){
+              result.push('.')
+        }
+    }
+ 
+    if(dotNum){
+         result.reverse().push('.', ...dotNum)
+         return '$'+((result.join('')).toString());
+    }else{
+         return '$'+((result.reverse().join('')).toString());
+    }
+
+}
 
 /*
 

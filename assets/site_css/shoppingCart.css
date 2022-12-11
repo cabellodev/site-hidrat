@@ -1,0 +1,263 @@
+/* CSS Para resumen de compra*/
+.jsx-card-resume{
+    padding: 1.5em .5em .5em;
+    border-radius: 2em;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    width:75%; 
+    margin: auto;
+}
+
+.jsx-card-resume-scrol{
+ /*    position: fixed; */
+}
+
+
+   
+@media screen and (device-width: 768px) and (device-height: 1024px) {
+.jsx-card-resume-scrol{
+    display: inline-block;
+}
+}
+
+
+.jsx-resume-title{
+    background-color:white; 
+    width:75%;
+    margin: auto;
+    background-color: #eeeeee;
+}
+
+.jsx-resume-title-content{
+    font-family: Lato, Tahoma, Sans-Serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #4A4A4A;
+}
+
+.resume-delivery-text{
+    font-family: Lato, Tahoma, Sans-Serif;
+    font-weight: normal;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.resume-delivery-min{
+    font-family: Lato, Tahoma, Sans-Serif;
+    font-weight: normal;
+    color: #888;
+    font-size: 0.9rem;
+    text-align:left;
+}
+
+.resume-delivery-comeback{
+    font-family: Lato, Tahoma, Sans-Serif;
+    font-weight: normal;
+    color: #888;
+    font-size: 1.0rem;
+    text-decoration: underline;
+}
+
+.resume-delivery-comeback-title{
+    font-family: Lato, Tahoma, Sans-Serif;
+    font-weight: normal;
+    color: #888;
+    font-size: 1.2rem;
+}
+
+.cart-comeback{
+    color: #888;
+}
+
+.purshase-total-text-bold{ 
+    font-family: Lato, Tahoma, Sans-Serif;
+    font-weight: 700;
+    color: #333;
+}
+
+.jsx-title{
+    text-align:left;
+/*     width:50%;  */
+}
+
+.jsx-total{
+    text-align:right; 
+    /* width:50%;  */
+}
+
+.jsx-total-btn{
+    width: 80%;
+    margin: auto;
+}
+
+.jsx-delivery{
+    text-align:left; 
+}
+
+.jsx-delivery-cart-comeback{
+    margin-bottom: 20px;
+    text-align:left; 
+}
+
+
+.jsx-total-btn-next:hover{
+    transform:scale(1,1);
+    -webkit-transform:scale(1.1,1.1);
+    -moz-transform:scale(1.1,1.1);
+}
+
+/* CSS Para items del carro de compra*/
+
+.jsx-card-item{
+    padding: 1.5em .5em .5em;
+    border-radius: 2em;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    background-color:#ffffff;
+}
+
+
+.fxw-item-btn-delete{
+    background-color:red;
+    border: 1px solid red;
+    float: right;
+}
+
+.fxw-item-btn-delete:hover{
+    background-color:hwb(0 0% 0%);
+    color:#f0f8ff;
+}
+
+.fxw-btn-count{
+    color:black;
+    float: right;
+}
+
+.fxw-btn-count:hover{
+    color:#ffffff;
+}
+
+
+.fxw-input-count{
+    background-color: white;
+    border: 1px solid #eeeeee;
+    float: right;
+    text-align: center;
+}
+
+.cart{
+    position: relative;
+}
+
+
+#cart_menu_num {
+    position: absolute;
+    top: 0;
+    left: 55%;
+    background: red;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 2px;
+    margin-top: 4px;
+  }
+/* 
+#progress {
+    position: relative;
+    margin-bottom: 30px;   
+}
+
+#progress-bar {
+    position: absolute;
+    background: red;
+    height: 5px;
+    width: 0%;
+    top: 50%;
+    left: 0;
+  }
+
+  #progress-num {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+  } */
+
+ /*  span.number {
+    background: lightseagreen;
+    border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    color: #fff;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    margin-right: 15px;
+    text-align: center;
+    width: 1.6em; 
+  } */
+
+
+    .progress-bar-container{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        counter-reset: step;
+        margin: 1rem 0;
+    }
+
+    .progress-bar-container::before, .progress{
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 4px;
+        width: 100%;
+        background-color:  #dcdcdc;
+    }
+
+    .progress{
+        background-color: #141b6a;
+        width:0%;
+    }
+
+    .progress-bar-step{
+        width: 2.1875rem;
+        height: 2.1875rem;
+        background-color: #dcdcdc;
+        border-radius:50%; 
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .progress-bar-step::before{ 
+        counter-increment: step;
+        content: counter(step); 
+        z-index: 1;
+    } 
+
+    .progress-bar-step::after{ 
+        content: attr(data-title); 
+        z-index: 1;
+        position: absolute;
+        top: calc(100% + 0.75rem);
+        font-size: 1rem;
+        font-weight: bold;
+        color: #666;
+    } 
+
+    .progress-bar-step-active{ 
+        z-index: 1;
+        background-color: #141b6a;
+        color: #f3f3f3;
+    }
+
+    .div-container-bar{
+     /*    margin-bottom:50px;margin-top:15px;margin-left: 400px; margin-right: 400px */
+     margin: auto;  
+    }

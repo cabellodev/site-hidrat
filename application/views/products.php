@@ -66,10 +66,11 @@
 
         <div>
             <section>
-                <div id="data-container"></div>
-              
+                <div id="data-container">
+
+
+                </div>              
                 <div id="pagination" style="margin: 0 40% 0 40%"></div>
-                <div>
             </section>
         </div>
 

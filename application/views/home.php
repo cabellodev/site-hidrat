@@ -64,7 +64,7 @@
               
             </section>
 
-
+            <button type="button" id="btn-transbank">Iniciar Transbank</button>
 
               <section>
                 <div class="container-fluid pt-5 pb-2">

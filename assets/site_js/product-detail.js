@@ -23,9 +23,9 @@
 	
 	// Products Widget Slick
 
+let products = [];
 
 get_product_id =()=>{
-    console.log(id_product);
 	$.ajax({
 		type: "GET",
 		url: host_url + `api/description/product/${id_product}`,
@@ -33,10 +33,10 @@ get_product_id =()=>{
 		dataType: "json",
 		async:false,
 		success: (result) => {
-			
+			console.log(result);
+			products = result;			
 			draw_product(result);
-			},
-       
+			},       
         });
 }
 
@@ -176,13 +176,135 @@ draw_product = (product)=>{
 	
 }
 
-	// Mobile Nav toggle
+plus = () =>{
+
+	let quantity = parseInt($('#quantity').val());
+	$('#quantity').val(quantity+1);
+};
+	
+minus = () =>{
+	let quantity = parseInt($('#quantity').val());
+	if(quantity > 1){
+		$('#quantity').val(quantity-1);
+	}
+};	
+
+$("#addProduct").on('click', ()=>{
+
+	let quantity = parseInt($('#quantity').val());
+	console.log(quantity);
+
+	let cantidad = parseInt(localStorage.getItem('ncantidad')) + parseInt(quantity);
+    localStorage.setItem("ncantidad", cantidad);
+	
+	if(quantity >= 1){
+		/* let product; */
+
+		let product;
+		products.map((u) => {
+			product = {
+				id: u.id,
+				quantity: quantity,
+				description: {
+					id: u.id,
+					name: u.name,
+					code: u.code,
+					description: jQuery.parseJSON(u.description),
+					model: u.model,   
+					price: format_price(u.price),
+					stock: u.stock,
+					image_first: u.image_first,
+					category: u.category,
+					supplier: u.supplier,
+					cantidad: quantity,
+				}
+			}
+			
+		});
+
+	
+		$.ajax({
+			type: "POST",
+			url: host_url + "api/cart/addMultipleProductDetail",
+			crossOrigin: false,
+			data:{product},
+			dataType: "json",
+			success: () => {
+				swal({
+					title: "Exito!",
+					icon: "success",
+					text: "Se han agregado los productos con éxito",
+					buttons: true,
+					buttons: {
+						confirm: {
+							text:'Continuar comprando',
+							value: '1',
+							visible: true,
+						},
+						car: {
+							text: "Ir al carro",
+							value: '2',
+							visible: true,
+						},
+					  },
+				}).then((action) => {
+					if (action == "1") {
+						get_cant_products();
+						$('#quantity').val(0);
+						swal.close();
+					} else if (action == "2")  {
+						window.location.href = `${host_url}shoppingCart`;
+					}
+				});
+			},
+			error: (result) => {	
+				swal({
+					title: "Error",
+					icon: "error",
+					text: result.msg,
+				})
+			}		
+		});
+	
+	}else{
+		swal({
+			title: `Agregar producto`,
+			icon: "warning",
+			text: `Debe ingresar una cantidad mayor a 0`,
+			buttons: {
+				cancel: {
+					text: "Cancelar",
+					value: "cancelar",
+					visible: true,
+				},
+			},
+		})
+	}
+});
+
 	
 	
+format_price = (price) => {
+    var num = price.toString() 
+    var numArr = num.split('.')
+    var [num, dotNum] = numArr
+ 
+ 
+    var operateNum = num.split('').reverse()
+    var result = [], len = operateNum.length
+    for(var i = 0; i< len; i++){
+         result.push(operateNum[i])
+         if(((i+1) % 3 === 0) && (i !== len-1)){
+              result.push('.')
+        }
+    }
+ 
+    if(dotNum){
+         result.reverse().push('.', ...dotNum)
+         return '$'+((result.join('')).toString());
+    }else{
+         return '$'+((result.reverse().join('')).toString());
+    }
 
-
-
-
-
-
+}
 
