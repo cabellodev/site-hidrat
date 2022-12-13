@@ -15,7 +15,7 @@
                                 <div class="d-flex justify-content-center align-items-center">
                                     <h2 class="text-white style-title-h2">SIEMPRE MÁS !</h2>
                                 </div>
-                                
+                                <button type="button" id="btn-transbank">Iniciar Transbank</button>
                                
 
                             </div>        
@@ -63,8 +63,6 @@
              </div>
               
             </section>
-
-            <button type="button" id="btn-transbank">Iniciar Transbank</button>
 
               <section>
                 <div class="container-fluid pt-5 pb-2">

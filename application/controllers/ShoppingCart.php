@@ -1,7 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 use Transbank\Webpay\WebpayPlus\Transaction;
-require 'vendor/autoload.php';
+if (file_exists(APPPATH . 'vendor/autoload.php')) {
+    require_once(APPPATH . 'vendor/autoload.php');
+} elseif (file_exists(APPPATH . '../vendor/autoload.php')) {
+    require_once(APPPATH . '../vendor/autoload.php');
+} 
 
 
 class ShoppingCart extends CI_Controller {
@@ -28,6 +32,7 @@ class ShoppingCart extends CI_Controller {
 
     public function newTransaction()
     {    
+        
         /* Save data from form */
         $data_purchase = $this->input->post('data'); 
         $arraydata = array(
@@ -40,6 +45,23 @@ class ShoppingCart extends CI_Controller {
         $buy_order = '000000012763';
         $session_id = "dasdsadas";
         $amount = $data_purchase['amount'];
+        $return_url = "http://www.localhost/site_hidratec/api/newTransaction/result";
+        $response = $transaction->create($buy_order, $session_id, $amount, $return_url);
+        $response->getUrl();
+        $response->getToken();
+        $redirectUrl = $response->getUrl().'?token_ws='.$response->getToken();
+        $this->response->sendJSONResponse(array('url' => $redirectUrl)); 
+    }
+
+
+    public function test()
+    {    
+        
+        /* Create new transaction */
+        $transaction = new Transaction();
+        $buy_order = '000000012763';
+        $session_id = "dasdsadas";
+        $amount = '1500';
         $return_url = "http://www.localhost/site_hidratec/api/newTransaction/result";
         $response = $transaction->create($buy_order, $session_id, $amount, $return_url);
         $response->getUrl();
