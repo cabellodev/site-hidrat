@@ -326,7 +326,7 @@ $route['api/cart/quantity']['GET'] = 'ShoppingCart/getQuantity';
 
 $route['api/test/mail']['GET'] = 'ShoppingCart/mail';
 
-
+$route['api/transbank']['GET'] = 'ShoppingCart/test';
 
 
 
