@@ -1,13 +1,16 @@
 $(()=>{
 
     get_category();
+    get_products ();
     get_supplier();
     get_section();
     get_products_all();
+   // get_product_localstorage();
 
 })
 
 let products = [];
+
 
 get_products_all =()=>{
 
@@ -34,6 +37,32 @@ get_products_all =()=>{
 }
 
 
+get_products =() =>{ // selector de productos
+    $.ajax({
+		type: "GET",
+		url: host_url + 'api/products/all',
+		crossOrigin: false,
+		dataType: "json",
+		success: (result) => {
+                const select_product = $("#product_name");
+                result.forEach( (element)=> {
+                    select_product.append($("<option>", {
+                    value: element.id ,
+                    text: element.name
+                }));
+                });
+
+                $("#product_name").selectize({
+                    sortField: "text",
+                });
+
+			}
+        ,
+    
+        
+    });
+   
+};
 
 
 get_section = ()=> {
@@ -47,9 +76,6 @@ get_section = ()=> {
 			}
         })
 }
-
-
-
 
 draw_sections =(section)=>{
    
@@ -255,27 +281,35 @@ select_subcategory = (subcategories)=>{
 
 search_product= ()=>{
 
-    let data={ supplier : $('#supplier').val(),category: $('#categories').val(),subcategory:  $('#subcategories').val(),
-                 subsubcategory: $('#subsubcategories').val()}
-
+    let data={ supplier : $('#supplier').val(),category: $('#categories').val(), subcategory: $('#subcategories').val(),
+                 subsubcategory: $('#subsubcategories').val(), name_product: $('#product_name option:selected').text()}
+    
     $.ajax({
 		type: "POST",
         data: {data},
-		url: host_url + 'api/product/search',
+		url: host_url + 'api/product/search', 
 		crossOrigin: false,
 		dataType: "json",
         async:false,
 		success: (result) => {
+            $('#list-product').show();
+            $('.product-content').empty();
+            save_localstorage(data);
             draw_products(result);
 			}
         ,
         error: ()=>{
 
             $('.product-content').empty();
-            let html= ' <div class="alert alert-dark>No se han encontrado resultados de la búsqueda </div>';
+            $('#list-product').hide();
+            let html= '<div class="alert alert-dark">No se han encontrado resultados de la búsqueda </div>';
             $('.product-content').append(html);
         }
     });
+}
+
+save_localstorage= (data)=>{
+      localStorage.setItem('search', JSON.stringify(data));
 }
 
  
@@ -396,6 +430,24 @@ search_product= ()=>{
         }
     })
  };
+
+ get_product_localstorage = ()=>{
+
+    if(!localStorage.getItem('search')){
+        get_products_all();
+       
+    }else{
+        search =JSON.parse(localStorage.getItem('search'));
+      
+        $('#supplier').val(search.supplier);
+        $('#category').val(search.category);
+    
+        
+     
+        search_product();
+    }
+}
+
 
  
 

@@ -22,36 +22,52 @@
         </section>
 
        <section>
-       <div id="header-search-product">
-            <div class="container">
-                <div class="row ">
-                        <div class="col-md-12 wow slideInRight " data-wow-delay="0.8" >
-                                <div class="header-search">
-                                    
 
-                                        <select class="input-select-primary" id ="supplier">
-                                            <option value="0">Seleccione marca</option>
-                                        </select>
+            
 
-                                        <select class="input-select" id ="categories">
-                                            <option value="0">Seleccione categoría</option>
-                                        </select>
-                                        <select class="input-select" id ="subcategories">
-                                            <option value="0">Seleccione sub-categoría</option>
-                                        </select>
-                                        <select class="input-select" id ="subsubcategories">
-                                            <option value="0">Seleccione sub-categoría</option>
-                                        </select>
-                                       
+                    <div class="row" style="background:#141b6a; padding-top:50px ; padding-bottom:50px ">
 
-                                        <input class="input" placeholder="Nombre de producto">
-                                        <button class="search-btn" id="search_product">BUSCAR</button>
-                                
-                                </div>
-                            </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12 align text-center">
+                                <label for="actividad" class="text-white"> Marca del producto </label>
+                                <select class="input-select" id ="supplier">
+                                    <option value="0">Seleccione marca</option>
+                                </select>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12 align text-center" >
+                        <label for="actividad"class="text-white">Categoría</label>
+                                <select class="input-select" id ="categories">
+                                        <option value="0">Seleccione categoría</option>
+                                </select>
+                        </div>
+                        
+                        <div class="col-lg-2 col-md-2 col-sm-12 align text-center" >
+                        <label for="actividad" class="text-white">Sub-categoría</label>
+                            <select class="input-select"id ="subcategories">
+                            <option value="0">Seleccione sub-categoría</option>
+                            </select>
+                        </div>
+                       
+                        <div class="col-lg-2 col-md-2 col-sm-12 align text-center" >
+                        <label for="actividad"class="text-white">Sub-categoría</label>
+                            <select class="input-select" id ="subsubcategories">
+                            <option value="0">Seleccione sub-categoría</option>
+                                </select>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12 align text-center" >
+                        <label for="actividad" class="text-white">Nombre producto</label>
+                                         <select class="size-select"  id ="product_name" >
+                                            <option value="0"></option>
+                                        </select>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12 align" id='frm_service'>
+                        <button class="btn btn-success" style="background:white; color:#141b6a; margin-top:20px;" id="search_product">BUSCAR O</button>
+                        </div>
+                        
                     </div>
-            </div>
-        </div>
+                  
+                   
+            
+        
        </section>
        
         
@@ -65,7 +81,7 @@
         </section>
 
         <div>
-            <section>
+            <section id="list-product">
                 <div id="data-container">
 
 

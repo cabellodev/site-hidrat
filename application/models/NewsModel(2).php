@@ -22,14 +22,11 @@ class NewsModel extends CI_Model
             'title'=> $data["title"],
             'date' => date("Y-m-d"),
             'description' => $data["description"],
-            'date_expiration'=> $data["date_to"],
         );
-
-      
         
         try {
           
-         $this->db->insert("news", $new);
+            $this->db->insert("news", $new);
             $id = $this->db->insert_id();
             $s = array(
                 "id" => $id,
@@ -53,7 +50,6 @@ class NewsModel extends CI_Model
         $new = array( 
             'title'=> $data["title"],
             'description' => $data["description"],
-            'date_expiration' => $data['date_to'],
         );
         try {
             $this->db->where("id", $data['id']);
@@ -90,24 +86,6 @@ class NewsModel extends CI_Model
         {  
             $sql= "DELETE FROM news WHERE id = ? ";
              return $this->db->query($sql, array($data['id']));
-        }
-
-
-
-        public function changeState ($data){
-                
-            $state = array(
-                'state' => $data['state'],
-
-            );
-            
-            try {
-            $this->db->where("id", $data['id']);
-            return $this->db->update("news", $data);
-            }catch (Exception $e) {
-                return false;
-            }
-
         }
 
 

@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 //$config['base_url'] = '';
-$config['base_url'] = 'http://www.localhost/site_hidratec';
+$config['base_url'] = 'http://www.localhost/site-hidratec-up';
 /*
 |--------------------------------------------------------------------------
 | Index File

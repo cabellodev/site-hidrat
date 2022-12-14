@@ -1520,20 +1520,16 @@ margin-top:15px;
 }
 
 .input-select {
-  padding: 0px 15px;
+  padding: 0px 40px;
   background: #FFF;
   border: 1px solid #E4E7ED;
+  border-radius: 40px 40px 40px 40px;
   height: 40px;
 }
 
-.header-search .input-select-primary{
-  margin-right: -4px;
-  border-radius: 40px 0px 0px 40px;
-  padding: 0px 15px;
-  background: #FFF;
-  border: 1px solid #E4E7ED;
-  height: 40px;
-}
+
+
+
 
 .header-search .input-select{
   margin-right: -4px;
@@ -1764,6 +1760,15 @@ margin-top:15px;
   RESPONSIVE STYLES               
 -----------------------------------------*/
 @media screen and (max-width: 2000px) {
+
+  .input-select {
+    padding: 0px 40px;
+    background: #FFF;
+    border: 1px solid #E4E7ED;
+    border-radius: 40px 40px 40px 40px;
+    height: 40px;
+  
+  }
     
     
 
@@ -1792,7 +1797,13 @@ margin-top:15px;
 
 
 @media screen and (max-width: 1500px) {
-    
+    .input-select {
+      padding: 0px 5px;
+      background: #FFF;
+      border: 1px solid #E4E7ED;
+      border-radius: 40px 40px 40px 40px;
+      height: 40px;
+    }
     
     .page-header-about{
     background-position: top;
@@ -2000,7 +2011,20 @@ margin-top:15px;
 
 
 @media screen and (max-width: 480px) {
+  .align{
+    text-align: center !important;
+    padding-bottom:10px !important;
+  }
+  .input-select {
     
+    background: #FFF;
+    border: 1px solid #E4E7ED;
+    border-radius: 40px 40px 40px 40px;
+    height: 40px;
+    margin: 0px auto !important;
+    
+  
+  }
     .page-header-about{
   
     background-position: top;
@@ -2130,6 +2154,21 @@ margin-top:15px;
 }
 
 @media screen and (max-width: 379px) {
+
+  .align{
+    text-align: center !important;
+    padding-bottom:10px !important;
+  }
+  .input-select {
+    
+    background: #FFF;
+    border: 1px solid #E4E7ED;
+    border-radius: 40px 40px 40px 40px;
+    height: 40px;
+    margin: 0px auto !important;
+    
+  
+  }
 
     .box-carousel img{
     width:350px !important;

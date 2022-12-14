@@ -12,9 +12,9 @@ class Login extends CI_Controller
     }
     
     public function login_user()
-	{
-        if ($this->input->is_ajax_request()) {
+	{   
             /* Variables a utilizar */
+           
             $msg = array();
             $table_user = ""; /*Almacenará la tabla donde se buscara el usuario */
             $table_rol = ""; /*Almacenará la tabla donde se buscara el rol */
@@ -24,7 +24,7 @@ class Login extends CI_Controller
             $data = $this->input->post('data');
             $email = $data['email'];
             $pass = $data['passwd'];
-
+         
 
              /* Cargar datos para la validación de formulario*/
             $rules = get_rules_login();
@@ -104,11 +104,7 @@ class Login extends CI_Controller
                     $this->output->set_status_header(401);
                 }
             }
-        }else{
-            $msg['msg']="No se pudo encontrar el recurso.";
-            $this->response->sendJSONResponse($msg);
-            $this->output->set_status_header(404);
-        }
+       
     }
 
     public function recovery($code)
