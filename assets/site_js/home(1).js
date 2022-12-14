@@ -14,6 +14,25 @@ $(() =>{
 })
 
 
+newTrans = () => {
+    
+    let xhr = new XMLHttpRequest();
+    xhr.open("get", `${host_url}api/transbank`);
+    xhr.responseType = "json";
+    xhr.addEventListener("load", () => {
+        let data = xhr.response;
+        if (xhr.status === 200) {
+            window.location.href = data.url;
+        }else {
+            alert('error');
+        }
+    });
+    xhr.send();
+
+}
+
+$('#btn-transbank').on('click', newTrans);
+
 get_section = ()=> {
     $.ajax({
 		type: "GET",
@@ -182,19 +201,10 @@ get_news = ()=> {
 }
 
 draw_news_home = (news)=>{
- 
-    let inicialize_time= new Date();
-	let current=inicialize_time.toISOString().split('T')[0];
-  
 
     $("#news-home").empty();
- 
+
     news.forEach(element => {
-     
-    
-    if(element.state == 1 ){
-    
-     if(current < element.date_expiration){
 
     html = ` <div class="row border-bottom pb-5 mb-5" data-aos-duration="1500" data-aos="zoom-in-left">
                  <div class="col-lg-4 col-12">
@@ -224,12 +234,8 @@ draw_news_home = (news)=>{
              </div>`;
    
     $("#news-home").append(html);
-     }
-    
-}
  });
 }
-
 
 
 

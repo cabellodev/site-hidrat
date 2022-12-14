@@ -16,7 +16,7 @@
   <link href="<?php echo base_url(); ?>/assets/css/login.css" rel="stylesheet" />
   <link href="<?php echo base_url(); ?>/assets/site_css/bootstrap.min.css" rel="stylesheet" />
 </head>
-
+<script>const host_url = "<?php echo base_url(); ?>";</script>
 
 <style type="text/css">
   .chargePage {
@@ -93,7 +93,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+          </div>
         </div>
     </div>    
 </div>
@@ -101,18 +101,19 @@
 <input id='msg' style='display: none'>
 
 
-<script>const host_url = "<?php echo base_url(); ?>";</script>
+
 <script src="<?php echo base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Third party plugin JS-->
+<script src="<?php echo base_url(); ?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Third party plugin JS-->
-        <script src="<?php echo base_url(); ?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
         <!-- Contact form JS-->
 <script src="<?php echo base_url(); ?>assets/mail/jqBootstrapValidation.js"></script>
 <script src="<?php echo base_url(); ?>assets/sweetalert.min.js"></script>
 
         <!-- Core theme JS-->
-<script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
+
 
   <!-- Custom scripts for all pages-->
 <script src="<?php echo base_url(); ?>assets/js/utils_js/sb-admin-2.min.js"></script>

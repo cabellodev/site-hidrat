@@ -160,28 +160,6 @@ class News extends CI_Controller {
 
 
 
-    public function changeState () { 
-
-      if ($this->accesscontrol->checkAuth()['correct']) {
-        $data = $this->input->post("data");
-        $this->load->model('NewsModel');
-      
-        if($this->NewsModel->changeState($data)){
-          
-          $this->response->sendJSONResponse(array('msg' => 'El estado se ha cambiado con éxito.'),200); 
-        }else{
-          $this->response->sendJSONResponse(array('msg' => 'No se ha podido obtener los datos.'), 400); 
-        }
-  
-    }else{
-      $this->response->sendJSONResponse(array('msg' => 'No tiene permisos suficientes.'), 400);
-    }
-
-
-    }
-
-
-
 
 
 /*

@@ -28,6 +28,7 @@
    
     <script>
     const host_url = "<?php echo base_url(); ?>";
+    
   </script>
 
   <style type="text/css">
@@ -262,9 +263,9 @@
         </div>
     </div>
   
+   
     <script src="<?php echo base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-   
     <!-- Core plugin JavaScript-->
     <script src="<?php echo base_url(); ?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/DataTables/datatables.min.js"></script>
@@ -279,6 +280,7 @@
 
     <script src="<?php echo base_url(); ?>assets/vendor/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/lodash/lodash.js"></script>
+  
    
   
     

@@ -51,17 +51,19 @@ $("#email_rec").change(() => {
 login = () => {
 	let email = $("#email").val();
 	let passwd = $("#passwd").val();
-
+    
 	let data = {
 		email: email,
 		passwd: passwd,
 	};
+
+	
 	$.ajax({
 		data: {
 			data
 		},
 		type: "POST",
-		url: host_url + "Login/login_user",
+		url: host_url + "api/login",
 		crossOrigin: false,
 		dataType: "json",
 		success: () => {
