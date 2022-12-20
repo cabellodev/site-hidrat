@@ -9,9 +9,63 @@ $(() =>{
       get_notices(); 
       get_services();
       get_supplier();
-      get_news(); 
+      get_news();
+      get_outstanding(); 
 
 })
+//////////////////// prueba transbank //////////////
+
+get_outstanding = ()=> {
+    let inicialize_time= new Date();
+	let current=inicialize_time.toISOString().split('T')[0];
+
+   
+
+    
+    $.ajax({
+		type: "GET",
+		url: host_url + 'home/get_outstanding',
+		crossOrigin: false,
+		dataType: "json",
+		success: (result) => {
+		
+            show_outstanding(result);
+			}
+        });
+
+}
+
+show_outstanding = (result)=> {
+    
+    let inicialize_time= new Date();
+	let current=inicialize_time.toISOString().split('T')[0];
+
+    if(current < result[0].date_expiration){
+    $("#show_outstanding").modal("show");
+    url=host_url + `assets/images/outstanding/${result[0].url}`;
+    $('.imagepreview').attr('src',url);
+    }
+}
+
+
+newTrans = () => {
+    
+    let xhr = new XMLHttpRequest();
+    xhr.open("get", `${host_url}api/transbank`);
+    xhr.responseType = "json";
+    xhr.addEventListener("load", () => {
+        let data = xhr.response;
+        if (xhr.status === 200) {
+            window.location.href = data.url;
+        }else {
+            alert('error');
+        }
+    });
+    xhr.send();
+
+}
+$('#btn-transbank').on('click', newTrans);
+//////////////////
 
 
 get_section = ()=> {
@@ -25,6 +79,9 @@ get_section = ()=> {
 			}
         })
 }
+
+
+
 
 
 draw_sections =(section)=>{

@@ -77,13 +77,6 @@ class MallTransaction
      */
     public function commit($token)
     {
-        if (!is_string($token)) {
-            throw new InvalidArgumentException('Token parameter given is not string.');
-        }
-        if (!isset($token) || trim($token) === '') {
-            throw new InvalidArgumentException('Token parameter given is empty.');
-        }
-
         try {
             $response = $this->sendRequest(
                 'PUT',
@@ -204,7 +197,7 @@ class MallTransaction
     /**
      * Get the default options if none are given.
      *
-     * @return Options|null
+     * @return Options
      */
     public static function getGlobalOptions()
     {

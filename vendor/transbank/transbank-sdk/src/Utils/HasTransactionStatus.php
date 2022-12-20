@@ -2,6 +2,8 @@
 
 namespace Transbank\Utils;
 
+use Transbank\Webpay\WebpayPlus\Responses\TransactionStatusResponse;
+
 trait HasTransactionStatus
 {
     public $status;
@@ -22,7 +24,7 @@ trait HasTransactionStatus
     /**
      * @param mixed $amount
      *
-     * @return static
+     * @return TransactionStatusResponse
      */
     public function setAmount($amount)
     {
@@ -34,7 +36,7 @@ trait HasTransactionStatus
     /**
      * @param mixed $buyOrder
      *
-     * @return static
+     * @return TransactionStatusResponse
      */
     public function setBuyOrder($buyOrder)
     {
@@ -62,7 +64,7 @@ trait HasTransactionStatus
     /**
      * @param mixed $cardNumber
      *
-     * @return static
+     * @return TransactionStatusResponse
      */
     public function setCardNumber($cardNumber)
     {
@@ -92,13 +94,13 @@ trait HasTransactionStatus
      */
     public function getResponseCode()
     {
-        return $this->responseCode;
+        return (int) $this->responseCode;
     }
 
     /**
      * @param mixed $status
      *
-     * @return static
+     * @return TransactionStatusResponse
      */
     public function setStatus($status)
     {
@@ -110,7 +112,7 @@ trait HasTransactionStatus
     /**
      * @param mixed $sessionId
      *
-     * @return static
+     * @return TransactionStatusResponse
      */
     public function setSessionId($sessionId)
     {
@@ -122,7 +124,7 @@ trait HasTransactionStatus
     /**
      * @param mixed $paymentTypeCode
      *
-     * @return static
+     * @return TransactionStatusResponse
      */
     public function setPaymentTypeCode($paymentTypeCode)
     {
@@ -134,7 +136,7 @@ trait HasTransactionStatus
     /**
      * @param mixed $installmentsAmount
      *
-     * @return static
+     * @return TransactionStatusResponse
      */
     public function setInstallmentsAmount($installmentsAmount)
     {
@@ -146,7 +148,7 @@ trait HasTransactionStatus
     /**
      * @param mixed $accountingDate
      *
-     * @return static
+     * @return TransactionStatusResponse
      */
     public function setAccountingDate($accountingDate)
     {
@@ -166,7 +168,7 @@ trait HasTransactionStatus
     /**
      * @param mixed $responseCode
      *
-     * @return static
+     * @return TransactionStatusResponse
      */
     public function setResponseCode($responseCode)
     {
@@ -223,7 +225,7 @@ trait HasTransactionStatus
     /**
      * @param mixed $transactionDate
      *
-     * @return static
+     * @return TransactionStatusResponse
      */
     public function setTransactionDate($transactionDate)
     {
@@ -275,7 +277,7 @@ trait HasTransactionStatus
     /**
      * @param mixed $installmentsNumber
      *
-     * @return static
+     * @return TransactionStatusResponse
      */
     public function setInstallmentsNumber($installmentsNumber)
     {
@@ -295,7 +297,7 @@ trait HasTransactionStatus
     /**
      * @param mixed $balance
      *
-     * @return static
+     * @return TransactionStatusResponse
      */
     public function setBalance($balance)
     {
@@ -307,7 +309,7 @@ trait HasTransactionStatus
     /**
      * @param mixed $authorizationCode
      *
-     * @return static
+     * @return TransactionStatusResponse
      */
     public function setAuthorizationCode($authorizationCode)
     {

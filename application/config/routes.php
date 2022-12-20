@@ -326,8 +326,18 @@ $route['api/cart/deleteProduct/(:num)']['GET'] = 'ShoppingCart/deleteProduct/$1'
 $route['api/cart/quantity']['GET'] = 'ShoppingCart/getQuantity';
 
 $route['api/test/mail']['GET'] = 'ShoppingCart/mail';
-
 $route['api/transbank']['GET'] = 'ShoppingCart/test';
+
+// POP-UP outstanding
+$route['cpanel/outstanding']['GET'] = 'Outstanding/admin_outstanding';
+$route['api/get_outstanding']['GET'] = 'Outstanding/get_outstanding';
+$route['api/update_outstanding']['POST'] = 'Outstanding/update_outstanding';
+$route['api/outstanding/up/image/(:num)']['POST'] = 'Outstanding/upImage/$1';
+$route['home/get_outstanding']['GET'] = 'HomeSite/getOutstanding';
+
+
+
+
 
 
 

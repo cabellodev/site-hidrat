@@ -283,6 +283,16 @@ public function getSubSubcategories($id_subcategory){
       }
    }
 
+   public function getOutstanding() {
+       
+    $this->load->model('OutstandingModel');
+        if( $res= $this->OutstandingModel->get_outstanding()){
+          $this->response->sendJSONResponse($res);
+        }else{
+        $this->response->sendJSONResponse(array('msg' => 'No se ha podido obtener los datos.'), 400); 
+      }
+   }
+
 
 
 
