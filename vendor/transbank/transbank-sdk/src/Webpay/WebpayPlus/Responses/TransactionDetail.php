@@ -69,20 +69,8 @@ class TransactionDetail
 
     public function isApproved()
     {
-        if($this->getResponseCode() !== ResponseCodesEnum::RESPONSE_CODE_APPROVED) {
-            return false;
-        }
-
-        switch($this->getStatus()) {
-            case TransactionStatusEnum::STATUS_CAPTURED:
-            case TransactionStatusEnum::STATUS_REVERSED:
-            case TransactionStatusEnum::STATUS_NULLIFIED:
-            case TransactionStatusEnum::STATUS_AUTHORIZED:
-            case TransactionStatusEnum::STATUS_PARTIALLY_NULLIFIED:
-                return true;
-            default :
-                return false;
-        }
+        return $this->getResponseCode() === ResponseCodesEnum::RESPONSE_CODE_APPROVED &&
+            !in_array($this->getStatus(), [TransactionStatusEnum::STATUS_FAILED]);
     }
 
     /**

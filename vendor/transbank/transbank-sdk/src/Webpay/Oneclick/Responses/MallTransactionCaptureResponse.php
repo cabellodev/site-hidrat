@@ -55,12 +55,12 @@ class MallTransactionCaptureResponse
 
     public function getResponseCode()
     {
-        return $this->responseCode;
+        return $this->reponseCode;
     }
 
-    public function setResponseCode($responseCode)
+    public function setResponseCode($reponseCode)
     {
-        $this->responseCode = $responseCode;
+        $this->reponseCode = $reponseCode;
 
         return $this;
     }

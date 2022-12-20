@@ -103,6 +103,7 @@
                 <div id="collapseKpi" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="<?php echo base_url();?>cpanel/outstanding"><i class="fas fa-puzzle-piece"></i>Pop-up</a>
                         <a class="collapse-item" href="<?php echo base_url();?>cpanel/home/section"><i class="fas fa-puzzle-piece"></i>Secciones web</a>
                         <a class="collapse-item" href="<?php echo base_url();?>home/service"><i class="fas fa-tools"></i> Servicios</a>
                         <a class="collapse-item" href="<?php echo base_url();?>home/supplier"><i class="fas fa-truck"></i> Proveedores</a>

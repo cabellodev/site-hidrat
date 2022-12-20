@@ -4,7 +4,7 @@ $(()=>{
     get_products ();
     get_supplier();
     get_section();
-    get_products_all();
+    search_product_old();
    // get_product_localstorage();
 
 })
@@ -276,10 +276,48 @@ select_subcategory = (subcategories)=>{
    });
 }
 
+search_product_old=()=>{
 
+    if(localStorage.getItem('search')){
+
+        products = JSON.parse(localStorage.getItem('search'));
+
+        let data = { supplier :products.supplier,category:products.category, subcategory: products.subcategory,
+        subsubcategory: products.subsubcategory, name_product: products.name_product}
+
+        $.ajax({
+            type: "POST",
+            data: {data},
+            url: host_url + 'api/product/search', 
+            crossOrigin: false,
+            dataType: "json",
+            async:false,
+            success: (result) => {
+                $('#list-product').show();
+                $('.product-content').empty();
+                draw_products(result);
+                }
+            ,
+            error: ()=>{
+                localStorage.removeItem('search');
+                $('.product-content').empty();
+                $('#list-product').hide();
+                let html= '<div class="alert alert-dark">No se han encontrado resultados de la búsqueda </div>';
+                $('.product-content').append(html);
+            }
+        });
+        
+    }else{
+        get_products_all();
+    }
+
+}
 
 
 search_product= ()=>{
+    
+ 
+
 
     let data={ supplier : $('#supplier').val(),category: $('#categories').val(), subcategory: $('#subcategories').val(),
                  subsubcategory: $('#subsubcategories').val(), name_product: $('#product_name option:selected').text()}
@@ -304,6 +342,7 @@ search_product= ()=>{
             $('#list-product').hide();
             let html= '<div class="alert alert-dark">No se han encontrado resultados de la búsqueda </div>';
             $('.product-content').append(html);
+            localStorage.removeItem('search');
         }
     });
 }
@@ -311,6 +350,12 @@ search_product= ()=>{
 save_localstorage= (data)=>{
       localStorage.setItem('search', JSON.stringify(data));
 }
+
+
+
+
+
+
 
  
  draw_products=(product)=>{
@@ -390,8 +435,8 @@ save_localstorage= (data)=>{
                                         <div class="add-to-cart">
                                             <div class="row">
                                                 <div class="col-md-12 show-btn-add-cart">                        
-                                                    <button class="add-to-cart-btn" id="href-product" onClick=product_by_id(${item.id})>
-                                                        <i class="fa-solid fa-eye"></i>       
+                                                    <button class="add-to-cart-btn text-white" id="href-product" onClick=product_by_id(${item.id})>
+                                                        <i style="color:white" class="fa-solid fa-eye"></i>       
                                                             Ver detalles
                                                     </button>
                                                 </div>
@@ -399,8 +444,8 @@ save_localstorage= (data)=>{
                                                     
                                                 </div>
                                                 <div class="col-md-12 show-btn-add-cart">
-                                                    <button class="add-to-cart-btn" id="href-product" onClick=add_product_by_id(${item.id})>
-                                                        <i class="fa fa-shopping-cart"></i>
+                                                    <button class="add-to-cart-btn text-white" id="href-product" onClick=add_product_by_id(${item.id})>
+                                                        <i style="color:white"class="fa fa-shopping-cart"></i>
                                                         Agregar al carro
                                                     </button>
                                                 </div>

@@ -17,7 +17,7 @@ class InscriptionStartResponse
 
     public function getRedirectUrl()
     {
-        return $this->getUrlWebpay().'?TBK_TOKEN='.$this->getToken();
+        return $this->getUrlWebpay().'?token_ws='.$this->getToken();
     }
 
     /**

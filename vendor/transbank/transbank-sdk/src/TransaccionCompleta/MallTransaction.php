@@ -27,20 +27,19 @@ class MallTransaction
 {
     use InteractsWithWebpayApi;
 
-    const ENDPOINT_CREATE = 'rswebpaytransaction/api/webpay/v1.2/transactions';
-    const ENDPOINT_INSTALLMENTS = 'rswebpaytransaction/api/webpay/v1.2/transactions/{token}/installments';
-    const ENDPOINT_COMMIT = 'rswebpaytransaction/api/webpay/v1.2/transactions/{token}';
-    const ENDPOINT_REFUND = 'rswebpaytransaction/api/webpay/v1.2/transactions/{token}/refunds';
-    const ENDPOINT_STATUS = 'rswebpaytransaction/api/webpay/v1.2/transactions/{token}';
-    const ENDPOINT_CAPTURE = 'rswebpaytransaction/api/webpay/v1.2/transactions/{token}/capture';
+    const ENDPOINT_CREATE = '/rswebpaytransaction/api/webpay/v1.2/transactions';
+    const ENDPOINT_INSTALLMENTS = '/rswebpaytransaction/api/webpay/v1.2/transactions/{token}/installments';
+    const ENDPOINT_COMMIT = '/rswebpaytransaction/api/webpay/v1.2/transactions/{token}';
+    const ENDPOINT_REFUND = '/rswebpaytransaction/api/webpay/v1.2/transactions/{token}/refunds';
+    const ENDPOINT_STATUS = '/rswebpaytransaction/api/webpay/v1.2/transactions/{token}';
+    const ENDPOINT_CAPTURE = '/rswebpaytransaction/api/webpay/v1.2/transactions/{token}/capture';
 
     public function create(
         $buyOrder,
         $sessionId,
         $cardNumber,
         $cardExpirationDate,
-        $details,
-        $cvv = null
+        $details
     ) {
         $payload = [
             'buy_order'            => $buyOrder,
@@ -49,9 +48,6 @@ class MallTransaction
             'card_expiration_date' => $cardExpirationDate,
             'details'              => $details,
         ];
-        if ($cvv) {
-            $payload['cvv'] = $cvv;
-        }
 
         try {
             $response = $this->sendRequest('POST', static::ENDPOINT_CREATE, $payload);
@@ -66,7 +62,7 @@ class MallTransaction
         $token,
         $details
     ) {
-        $endpoint = str_replace('{token}', $token, static::ENDPOINT_INSTALLMENTS);
+        $endpoint = str_replace('{token}', $token, self::ENDPOINT_INSTALLMENTS);
 
         try {
             return array_map(function ($detail) use ($endpoint) {
@@ -153,7 +149,7 @@ class MallTransaction
      */
     public function capture($token, $commerceCode, $buyOrder, $authorizationCode, $captureAmount)
     {
-        $endpoint = str_replace('{token}', $token, static::ENDPOINT_CAPTURE);
+        $endpoint = str_replace('{token}', $token, self::ENDPOINT_CAPTURE);
 
         $payload = [
             'buy_order'          => $buyOrder,

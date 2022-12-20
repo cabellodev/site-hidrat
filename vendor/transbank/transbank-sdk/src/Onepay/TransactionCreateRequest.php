@@ -18,8 +18,6 @@ class TransactionCreateRequest extends BaseRequest implements \JsonSerializable
     private $signature; // String
     private $generateOttQrCode = true;
     private $commerceLogoUrl;
-    private $issuedAt;
-    private $widthHeight;
 
     public function __construct(
         $externalUniqueNumber,
@@ -33,8 +31,6 @@ class TransactionCreateRequest extends BaseRequest implements \JsonSerializable
         $widthHeight = '',
         $commerceLogoUrl = ''
     ) {
-        $this->generateOttQrCode = true;
-
         if (!$externalUniqueNumber) {
             throw new \Exception('External unique number cannot be null.');
         }

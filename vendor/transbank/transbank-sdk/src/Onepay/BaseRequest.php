@@ -2,42 +2,40 @@
 
 namespace Transbank\Onepay;
 
-/**
- * @class BaseRequest
- * Basic request class that includes commonly used members
- */
-class BaseRequest
-{
-    private $apiKey;
-    private $appKey;
+ /**
+  * @class BaseRequest
+  * Basic request class that includes commonly used members
+  */
+ class BaseRequest
+ {
+     public function __construct()
+     {
+         $this->apiKey = null;
+         $this->appKey = null;
+         $this->generateOttQrCode = true;
+     }
 
-    public function __construct()
-    {
-        $this->apiKey = null;
-        $this->appKey = null;
-    }
+     public function getApiKey()
+     {
+         return $this->apiKey;
+     }
 
-    public function getApiKey()
-    {
-        return $this->apiKey;
-    }
+     public function setApiKey($apiKey)
+     {
+         $this->apiKey = $apiKey;
 
-    public function setApiKey($apiKey)
-    {
-        $this->apiKey = $apiKey;
+         return $this;
+     }
 
-        return $this;
-    }
+     public function getAppKey()
+     {
+         return $this->appKey;
+     }
 
-    public function getAppKey()
-    {
-        return $this->appKey;
-    }
+     public function setAppKey($appKey)
+     {
+         $this->appKey = $appKey;
 
-    public function setAppKey($appKey)
-    {
-        $this->appKey = $appKey;
-
-        return $this;
-    }
-}
+         return $this;
+     }
+ }
