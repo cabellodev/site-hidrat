@@ -114,6 +114,20 @@ class HomeSite extends CI_Controller {
   }
 
 
+  public function simpleSearch(){
+    $data = $this->input->post("data");
+    $this->load->model('ProductModel');
+    
+    if($res=$this->ProductModel->simple_search($data)){
+          $this->response->sendJSONResponse($res); 
+       }else{
+              $this->response->sendJSONResponse(array('msg' => 'No se ha podido obtener los datos.'), 400); 
+       }
+  
+  }
+
+
+
   public function getCategory(){
 
       $this->load->model('ProductModel');

@@ -1254,6 +1254,12 @@ margin-top:15px;
 
 /*--- PRODUCT -----*/
 
+
+
+.select-size-{
+  width: 100px;
+}
+
 .product-content{
   margin-right: 100px;
   margin-left: 100px;

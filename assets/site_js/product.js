@@ -1,16 +1,14 @@
 $(()=>{
-
+    $(".supplier").hide();
     get_category();
     get_products ();
+    search_field();
     get_supplier();
     get_section();
     search_product_old();
    // get_product_localstorage();
 
 })
-
-let products = [];
-
 
 get_products_all =()=>{
 
@@ -36,33 +34,64 @@ get_products_all =()=>{
     });
 }
 
+let name_product=[];
 
 get_products =() =>{ // selector de productos
     $.ajax({
 		type: "GET",
 		url: host_url + 'api/products/all',
 		crossOrigin: false,
+        async: false,
 		dataType: "json",
 		success: (result) => {
-                const select_product = $("#product_name");
-                result.forEach( (element)=> {
-                    select_product.append($("<option>", {
-                    value: element.id ,
-                    text: element.name
-                }));
-                });
-
-                $("#product_name").selectize({
-                    sortField: "text",
-                });
-
+                name_product=result;
 			}
-        ,
-    
-        
+        ,     
     });
-   
 };
+
+/*busqueda nueva simple*/
+let products = [];
+let category=[]
+
+search_field = () => {
+
+    get_products();
+    get_category();
+
+    let collection=[];
+
+    name_product.forEach(x=>{
+        data={id:x.id,name:x.name}
+        collection.push(data);
+    });
+
+    category.forEach(x=>{  
+        data={id:-x.id,name:x.name}
+        collection.push(data);
+    });
+
+    let aux=[];
+    collection.map((u) => {
+        let option = document.createElement("option"); 
+        $(option).val(u.id); 
+        $(option).attr('name', u.name);
+        $(option).html(u.name); 
+        $(option).appendTo("#product_name");
+        aux.push(u.name);
+    });
+
+    $("#product_name").selectize({
+       
+        sortField: {
+            field: 'text',
+            direction: 'asc'
+          }
+    });
+    $("#product_name").val('');
+}   
+
+/////////////
 
 
 get_section = ()=> {
@@ -87,7 +116,6 @@ draw_sections =(section)=>{
             $(".title-catalogo").text(element.title);
          }
        
-
          if(element.item == "Cabecera de módulo Productos"  ){
             url = host_url + `assets/images/sections/${element.url}`;
             $(".title-product").text(element.title);
@@ -101,8 +129,6 @@ draw_sections =(section)=>{
                                          "background-repeat": "no-repeat",
                                         
                                         });*/
-           
-
           }
 
     })
@@ -125,7 +151,6 @@ get_supplier= ()=> {
 select_supplier= (supplier)=>{
 
     const select_supplier = $("#supplier");
- 
     supplier.forEach( (element)=> {
     select_supplier.append($("<option>", {
         value: element.id ,
@@ -134,13 +159,16 @@ select_supplier= (supplier)=>{
    });
 }
 
+
 get_category = ()=> {
     $.ajax({
 		type: "GET",
 		url: host_url + 'api/categories',
 		crossOrigin: false,
+        async:false,
 		dataType: "json",
 		success: (result) => {
+            category = result;
             select_category(result);
 			}
         });
@@ -148,10 +176,8 @@ get_category = ()=> {
 
 // select de categorias
 select_category = (categories)=>{
-
-    const select_category = $("#categories");
-  
     
+    const select_category = $("#categories");
     categories.forEach( (element)=> {
     select_category.append($("<option>", {
         value: element.id ,
@@ -162,26 +188,20 @@ select_category = (categories)=>{
 
 
 $("#categories").change('click',()=>{
-     id_category= $("#categories").val();
 
+     id_category= $("#categories").val();
      const select_subsubcategory = $("#subsubcategories");
      select_subsubcategory.empty();
      select_subsubcategory.append($("<option>", {
          value: 0 ,
          text: 'Seleccionar sub-categoria'
      }));
-
      get_subcategory(id_category);
-
-    
 })
 
 $("#subcategories").change('click',()=>{
     id_subcategory= $("#subcategories").val();
-
     get_subsubcategory(id_category);
-
-   
 })
 
 get_subsubcategory = (id_subcategory)=> {
@@ -202,7 +222,6 @@ get_subsubcategory = (id_subcategory)=> {
                 text: 'Seleccionar sub-categoria'
             }));
         }
-
         });
 }
 
@@ -313,11 +332,9 @@ search_product_old=()=>{
 
 }
 
-
+/*
 search_product= ()=>{
     
- 
-
 
     let data={ supplier : $('#supplier').val(),category: $('#categories').val(), subcategory: $('#subcategories').val(),
                  subsubcategory: $('#subsubcategories').val(), name_product: $('#product_name option:selected').text()}
@@ -345,24 +362,61 @@ search_product= ()=>{
             localStorage.removeItem('search');
         }
     });
+}*/
+
+let supplier_active=false;
+$("#filter").on('click',()=>{
+    if(supplier_active){
+        supplier_active=false; 
+        $("#supplier").val(0);
+        $("#filter").text('Filtro avanzado').css({'background':'white','color':'#141b6a'});;
+        $(".supplier").hide();}
+    else{supplier_active=true;
+        $("#filter").text('Filtro simple').css({'background':'red','color':'#141b6a'});
+        $(".supplier").show();}
+})
+
+
+search_advanced= ()=>{
+    console.log($('#product_name').val());
+    let data={  supplier : $('#supplier').val(), name_product: $('#product_name option:selected').val() }
+    search_request(data);
 }
 
+search_request= (data)=>{
+    
+    $.ajax({
+		type: "POST",
+        data: {data},
+		url: host_url + 'api/product/simple/search', 
+		crossOrigin: false,
+		dataType: "json",
+        async:false,
+		success: (result) => {
+            $('#list-product').show();
+            $('.product-content').empty();
+            save_localstorage(data);
+            draw_products(result);
+			}
+        ,
+        error: ()=>{
+
+            $('.product-content').empty();
+            $('#list-product').hide();
+            let html= '<div class="alert alert-dark">No se han encontrado resultados de la búsqueda </div>';
+            $('.product-content').append(html);
+            localStorage.removeItem('search');
+        }
+    });
+
+}
 save_localstorage= (data)=>{
       localStorage.setItem('search', JSON.stringify(data));
 }
 
-
-
-
-
-
-
- 
- draw_products=(product)=>{
+draw_products=(product)=>{
 
     let container = $('#pagination');
-
-    
     container.pagination({
         dataSource: product,
         showPageNumbers: true,
@@ -479,26 +533,16 @@ save_localstorage= (data)=>{
  get_product_localstorage = ()=>{
 
     if(!localStorage.getItem('search')){
-        get_products_all();
-       
+        get_products_all(); 
     }else{
         search =JSON.parse(localStorage.getItem('search'));
-      
         $('#supplier').val(search.supplier);
-        $('#category').val(search.category);
-    
-        
-     
+        $('#product_name').val(search.product_name);
         search_product();
     }
 }
 
-
- 
-
-
 product_by_id =(id)=>{
-
     let url = 'products/details'+'?id='+id;
     window.location.assign(host_url+url);
     
@@ -577,8 +621,8 @@ add_product_by_id = (id)=>{
 }
 
 
-$("#search_product").on('click',search_product);
-
+//$("#search_product").on('click',search_product);
+$("#search_advanced").on('click',search_advanced);
 format_price = (price) => {
     var num = price.toString() 
     var numArr = num.split('.')

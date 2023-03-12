@@ -23,51 +23,50 @@
 
        <section>
 
-            
-
-                    <div class="row" style="background:#141b6a; padding-top:50px ; padding-bottom:50px ">
-
-                        <div class="col-lg-2 col-md-2 col-sm-12 align text-center">
-                                <label for="actividad" class="text-white"> Marca del producto </label>
-                                <select class="input-select" id ="supplier">
-                                    <option value="0">Seleccione marca</option>
-                                </select>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-sm-12 align text-center" >
-                        <label for="actividad"class="text-white">Categoría</label>
-                                <select class="input-select" id ="categories">
-                                        <option value="0">Seleccione categoría</option>
-                                </select>
-                        </div>
+                    <div class="row justify-content-center" style="background:#141b6a; padding-top:50px ; padding-bottom:50px ;">
                         
-                        <div class="col-lg-2 col-md-2 col-sm-12 align text-center" >
-                        <label for="actividad" class="text-white">Sub-categoría</label>
-                            <select class="input-select"id ="subcategories">
-                            <option value="0">Seleccione sub-categoría</option>
-                            </select>
-                        </div>
-                       
-                        <div class="col-lg-2 col-md-2 col-sm-12 align text-center" >
-                        <label for="actividad"class="text-white">Sub-categoría</label>
-                            <select class="input-select" id ="subsubcategories">
-                            <option value="0">Seleccione sub-categoría</option>
-                                </select>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-sm-12 align text-center" >
-                        <label for="actividad" class="text-white">Nombre producto</label>
-                                         <select class="size-select"  id ="product_name" >
-                                            <option value="0"></option>
-                                        </select>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-sm-12 align" id='frm_service'>
-                        <button class="btn btn-success" style="background:white; color:#141b6a; margin-top:20px;" id="search_product">BUSCAR O</button>
-                        </div>
                         
-                    </div>
-                  
-                   
-            
-        
+                           
+                    <!--        <div class="col-lg-2 col-md-2 col-sm-12 align text-center" >
+                            <label for="actividad"class="text-white">Categoría</label>
+                                    <select class="input-select" id ="categories">
+                                            <option value="0">Seleccione categoría</option>
+                                    </select>
+                            </div>
+                            
+                            <div class="col-lg-2 col-md-2 col-sm-12 align text-center" >
+                            <label for="actividad" class="text-white">Sub-categoría</label>
+                                <select class="input-select"id ="subcategories">
+                                <option value="0">Seleccione sub-categoría</option>
+                                </select>
+                            </div>
+                        
+                            <div class="col-lg-2 col-md-2 col-sm-12 align text-center" >
+                            <label for="actividad"class="text-white">Sub-categoría</label>
+                                <select class="input-select" id ="subsubcategories">
+                                <option value="0">Seleccione sub-categoría</option>
+                                    </select>
+                            </div>-->
+                            <div class="col-lg-4 col-md-3 col-sm-12 align text-center" >
+                                 <label  class="text-white">Busqueda (nombres de productos , categorias)</label>
+                                            <select class="size-select"  id ="product_name" >
+                                                <option value="">Digite su búsqueda.....</option>
+                                            </select>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 align text-center supplier select-size">
+                                 <label  class="text-white">Marca </label>
+                                 <select  id ="supplier">
+                                     <option value="0">Seleccione marca</option>
+                                 </select>
+                           </div>
+                           <div class="row justify-content-center" style="background:#141b6a; padding-top:5px ; ">
+                                <div class="col-lg-2 col-md-2 col-sm-12 align " id='frm_service'>
+                                        <button class="btn btn-success" style="background:white; color:#141b6a; margin-top:20px;" id="search_advanced">Buscar</button>
+                                        <button class="btn btn-success" style="background:white; color:#141b6a; margin-top:20px;" id="filter">Filtro avanzado</button>
+                                </div> 
+                            </div>     
+                </div>
+              
        </section>
        
         
