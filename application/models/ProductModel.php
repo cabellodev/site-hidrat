@@ -42,8 +42,66 @@ public function get_product()
 }
 
 
-    public function get_products($data)
-    {    
+
+
+   public function simple_search($data){
+
+        if($data['supplier']!=0 && $data['name_product']!=""){
+            $id=(int)$data['name_product'];
+            if($id < 0){ //es una categoria 
+                $id_category= ($id*-1);
+               
+                $query = "SELECT p.id ,p.name , c.name category , s.name supplier,p.image_first
+                        FROM product p
+                        LEFT JOIN supplier s ON s.id= p.supplier_id
+                        LEFT JOIN category c ON c.id = p.category_id
+                        WHERE p.category_id = ? and p.supplier_id =?"; 
+                        return  $this->db->query($query,array($id_category,$data['supplier']))->result_array();
+            }else { //es un nombre de producto
+               
+                $query = "SELECT p.id ,p.name , c.name category , s.name supplier,p.image_first
+                        FROM product p
+                        LEFT JOIN supplier s ON s.id= p.supplier_id
+                        LEFT JOIN category c ON c.id = p.category_id
+                        WHERE p.id=? and p.supplier_id =?"; 
+                        return  $this->db->query($query,array($id,$data['supplier']))->result_array();  }
+                    
+        }else if($data['name_product']!=0 && $data['supplier']==0){
+            
+            $id=(int)$data['name_product'];
+
+            if($id < 0){
+                $id_category= ($id*-1);
+               
+                $query = "SELECT p.id ,p.name , c.name category , s.name supplier,p.image_first
+                        FROM product p
+                        LEFT JOIN supplier s ON s.id= p.supplier_id
+                        LEFT JOIN category c ON c.id = p.category_id
+                        WHERE p.category_id = ? "; 
+                        return  $this->db->query($query,array($id_category))->result_array();
+            }else {
+               
+                $query = "SELECT p.id ,p.name , c.name category , s.name supplier,p.image_first
+                        FROM product p
+                        LEFT JOIN supplier s ON s.id= p.supplier_id
+                        LEFT JOIN category c ON c.id = p.category_id
+                        WHERE p.id=?"; 
+                        return  $this->db->query($query,array($id))->result_array(); 
+            }
+
+        }else if ($data['supplier']!=0 && ($data['name_product']==0||$data['name_product']=="")){
+
+                $query = "SELECT p.id ,p.name , c.name category , s.name supplier,p.image_first
+                            FROM product p
+                            LEFT JOIN supplier s ON s.id= p.supplier_id
+                            LEFT JOIN category c ON c.id = p.category_id
+                            WHERE p.supplier_id=?"; 
+                            return  $this->db->query($query,array($data['supplier']))->result_array();
+        }
+   }
+
+    public function get_products($data){ 
+
             $category=$data['category'];
             $supplier=$data['supplier'];
             $subcategory=$data['subcategory'];

@@ -254,6 +254,7 @@ $route['api/chat/get/messages/(:num)']['GET']= 'Chat/getMessageById/$1';
 
 // PRODUCT PAGE 
 $route['api/product/search']['POST']= 'HomeSite/getProducts';
+$route['api/product/simple/search']['POST']= 'HomeSite/simpleSearch';
 $route['products/details']['GET']= 'Welcome/productById/$1';
 $route['api/description/product/(:num)']['GET']= 'HomeSite/getProductId/$1';
 

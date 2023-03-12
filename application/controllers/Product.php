@@ -48,9 +48,6 @@ class Product extends CI_Controller {
            }
       
       }
-
-
-
    
 
     // functions web site item Home and services
