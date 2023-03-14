@@ -59,7 +59,7 @@
                  <h2 class ="title-brand text-center style-title-h2 wow slideInLeft " style="color:white; padding-bottom:50px;padding-top:40px;font-size:40px;"> <i class="bi-people"></i>  <span class="title-notices"></span></h2>
                       <div class="owl-carousel news-carousel box-carousel"  id = "notice-home" >
                         
-                        </div>
+                     </div>
              </div>
               
             </section>

@@ -254,7 +254,6 @@ $route['api/chat/get/messages/(:num)']['GET']= 'Chat/getMessageById/$1';
 
 // PRODUCT PAGE 
 $route['api/product/search']['POST']= 'HomeSite/getProducts';
-$route['api/product/simple/search']['POST']= 'HomeSite/simpleSearch';
 $route['products/details']['GET']= 'Welcome/productById/$1';
 $route['api/description/product/(:num)']['GET']= 'HomeSite/getProductId/$1';
 
@@ -306,8 +305,6 @@ $route['api/home/copy/product/up/images/(:num)']['POST']  = 'Products/copy_uploa
 $route['api/home/delete/product/(:num)']['POST'] = 'Products/deleteProduct/$1';
 
 
-
-
 //HOME Supplier- CPANEL
 $route['api/home/get/purveyor']['GET'] = 'Purveyor/getPurveyor'; 
 $route['api/home/create/purveyor']['POST'] = 'Purveyor/createPurveyor';
@@ -335,6 +332,11 @@ $route['api/get_outstanding']['GET'] = 'Outstanding/get_outstanding';
 $route['api/update_outstanding']['POST'] = 'Outstanding/update_outstanding';
 $route['api/outstanding/up/image/(:num)']['POST'] = 'Outstanding/upImage/$1';
 $route['home/get_outstanding']['GET'] = 'HomeSite/getOutstanding';
+
+//update
+$route['api/product/simple/search']['POST']= 'HomeSite/simpleSearch';
+
+
 
 
 

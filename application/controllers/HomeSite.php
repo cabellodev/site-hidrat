@@ -229,20 +229,6 @@ public function getSubSubcategories($id_subcategory){
         }
    }
 
-
- public function getProducts() {
-  $data = $this->input->post("data");
-   $this->load->model('ProductModel');
-        if( $res= $this->ProductModel->get_products($data)){
-          $this->response->sendJSONResponse($res);
-        }else{
-        $this->response->sendJSONResponse(array('msg' => 'No se ha podido obtener los datos.'), 400); 
-      }
-  }
-
-
-
-  
   public function getProductId($id) {
 
       $this->load->model('ProductModel');
@@ -306,6 +292,16 @@ public function getSubSubcategories($id_subcategory){
         $this->response->sendJSONResponse(array('msg' => 'No se ha podido obtener los datos.'), 400); 
       }
    }
+
+   public function getProducts() {
+    $data = $this->input->post("data");
+     $this->load->model('ProductModel');
+          if( $res= $this->ProductModel->get_products($data)){
+            $this->response->sendJSONResponse($res);
+          }else{
+          $this->response->sendJSONResponse(array('msg' => 'No se ha podido obtener los datos.'), 400); 
+        }
+    }
 
 
 
