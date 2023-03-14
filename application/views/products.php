@@ -22,11 +22,10 @@
         </section>
 
        <section>
-
-                    <div class="row justify-content-center" style="background:#141b6a; padding-top:50px ; padding-bottom:50px ;">
+       <div class="row justify-content-center " style="background:#141b6a; padding-top:20px ; padding-bottom:20px ;">
                         
-                        
-                           
+      <!-- <h2 class ="style-p text-center mb-5" style="color:white;font-size:30px;"><span class="title-search"></span></h2>-->
+      <!-- <button class="btn btn-success" style="background:white; color:#141b6a; margin-top:20px;" id="filter"><i class="fas fa-filter"></i> <span class="filter">Filtro avanzado</span></button>-->
                     <!--        <div class="col-lg-2 col-md-2 col-sm-12 align text-center" >
                             <label for="actividad"class="text-white">Categoría</label>
                                     <select class="input-select" id ="categories">
@@ -47,45 +46,47 @@
                                 <option value="0">Seleccione sub-categoría</option>
                                     </select>
                             </div>-->
-                            <div class="col-lg-4 col-md-3 col-sm-12 align text-center" >
-                                 <label  class="text-white">Busqueda (nombres de productos , categorias)</label>
-                                            <select class="size-select"  id ="product_name" >
-                                                <option value="">Digite su búsqueda.....</option>
-                                            </select>
+                            
+                            <div class="col-lg-4 col-md-4 col-sm-12  align text-center supplier">
+                                        <label for="" class="text-white">Marca</label>
+                                        <select  id ="supplier"> 
+                                            <option value="0">Seleccione marca</option>
+                                        </select>
+                                    </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 align text-center" >
+                                        <label for="" class="text-white">Nombre de producto o tipo categoría</label>
+                                         <select id ="product_name">
+                                            <option value="">Digite su búsqueda.....</option>
+                                        </select>
+                                 </div>
+                                 <div class="col-lg-2 col-md-2 col-sm-12 align text-center" >
+                                 <button class="btn btn-success" style="background:white; color:#141b6a; margin-top:20px;" id="filter"><i class="fas fa-filter"></i> <span class="filter">Filtro avanzado</span></button>
+                                 </div>
+                                
+                                 
+                                 
+
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 align text-center supplier select-size">
-                                 <label  class="text-white">Marca </label>
-                                 <select  id ="supplier">
-                                     <option value="0">Seleccione marca</option>
-                                 </select>
-                           </div>
-                           <div class="row justify-content-center" style="background:#141b6a; padding-top:5px ; ">
-                                <div class="col-lg-2 col-md-2 col-sm-12 align " id='frm_service'>
-                                        <button class="btn btn-success" style="background:white; color:#141b6a; margin-top:20px;" id="search_advanced">Buscar</button>
-                                        <button class="btn btn-success" style="background:white; color:#141b6a; margin-top:20px;" id="filter">Filtro avanzado</button>
-                                </div> 
-                            </div>     
-                </div>
+                                
+                         <div class="row justify-content-center" style="background:#141b6a; padding-top:5px; padding-bottom:20px ">
+                                <div class="col-lg-2 col-md-2 col-sm-12 " id='frm_service'>
+                                        
+                                        <button class="btn btn-success" style="background:white; color:#141b6a;" id="search_advanced"><i class="bi-search"></i> Buscar</button>
+                                    </div> 
+                            </div>   
+               
               
        </section>
-       
-        
 
 
-
-
-        <section>
-                        <!-- store products -->
-                    <div class="row product-content">  </div>  
+        <section>         <!-- store products -->
+                <div class="row product-content">  </div>  
         </section>
 
         <div>
-            <section id="list-product">
-                <div id="data-container">
-
-
-                </div>              
-                <div id="pagination" style="margin: 0 40% 0 40%"></div>
+             <section id="list-product">
+                 <div id="data-container"> </div>              
+                 <div id="pagination" style="margin: 0 40% 0 40%"></div>
             </section>
         </div>
 

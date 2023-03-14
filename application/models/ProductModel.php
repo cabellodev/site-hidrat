@@ -66,7 +66,7 @@ public function get_product()
                         WHERE p.id=? and p.supplier_id =?"; 
                         return  $this->db->query($query,array($id,$data['supplier']))->result_array();  }
                     
-        }else if($data['name_product']!=0 && $data['supplier']==0){
+        }else if($data['name_product']!=0 && ($data['supplier']==0 ||$data['supplier']=="" )){
             
             $id=(int)$data['name_product'];
 
@@ -100,6 +100,7 @@ public function get_product()
         }
    }
 
+   /*
     public function get_products($data){ 
 
             $category=$data['category'];
@@ -379,10 +380,10 @@ public function get_product()
             }
     
  
-           */
+           
     
 
-    }
+    }*/
 
 
 // agregar esta funcion al proyecto 
